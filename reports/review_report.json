@@ -1,0 +1,118 @@
+{
+    "tool": "CodeSentinel AI",
+    "files_reviewed": 2,
+    "finding_count": 11,
+    "review_time_seconds": 0.0013884000945836306,
+    "findings": [
+        {
+            "file": "buggy_app.py",
+            "line": 23,
+            "severity": "CRITICAL",
+            "category": "bug",
+            "rule": "PY007",
+            "title": "Division or modulo by zero",
+            "explanation": "This expression will raise a runtime exception.",
+            "suggestion": "Validate the divisor before performing the operation."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 4,
+            "severity": "HIGH",
+            "category": "security",
+            "rule": "GEN001",
+            "title": "Possible hard-coded secret",
+            "explanation": "Secrets stored directly in source code may leak through Git history, logs or screenshots.",
+            "suggestion": "Move secrets to environment variables or a secret manager and rotate any exposed credentials."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 6,
+            "severity": "HIGH",
+            "category": "bug",
+            "rule": "PY001",
+            "title": "Mutable default argument",
+            "explanation": "Mutable default values are shared between function calls and can cause unexpected state.",
+            "suggestion": "Use None as the default and create the list, dictionary or set inside the function."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 17,
+            "severity": "HIGH",
+            "category": "security",
+            "rule": "PY004",
+            "title": "os.system() command execution",
+            "explanation": "Building shell commands from untrusted data may lead to command injection.",
+            "suggestion": "Prefer subprocess.run() with an argument list and shell=False."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 20,
+            "severity": "HIGH",
+            "category": "security",
+            "rule": "PY005",
+            "title": "subprocess shell=True",
+            "explanation": "shell=True increases command-injection risk.",
+            "suggestion": "Use shell=False and pass command arguments as a list."
+        },
+        {
+            "file": "unsafe_web.js",
+            "line": 1,
+            "severity": "HIGH",
+            "category": "security",
+            "rule": "GEN001",
+            "title": "Possible hard-coded secret",
+            "explanation": "Secrets stored directly in source code may leak through Git history, logs or screenshots.",
+            "suggestion": "Move secrets to environment variables or a secret manager and rotate any exposed credentials."
+        },
+        {
+            "file": "unsafe_web.js",
+            "line": 8,
+            "severity": "HIGH",
+            "category": "security",
+            "rule": "JS001",
+            "title": "Use of eval()",
+            "explanation": "eval() may execute attacker-controlled JavaScript.",
+            "suggestion": "Avoid eval() and validate structured input instead."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 13,
+            "severity": "MEDIUM",
+            "category": "reliability",
+            "rule": "PY002",
+            "title": "Bare except block",
+            "explanation": "A bare except catches every exception, including errors that should usually be visible.",
+            "suggestion": "Catch only the specific exception types you expect."
+        },
+        {
+            "file": "unsafe_web.js",
+            "line": 4,
+            "severity": "MEDIUM",
+            "category": "security",
+            "rule": "JS002",
+            "title": "Direct innerHTML assignment",
+            "explanation": "Untrusted HTML content may lead to cross-site scripting.",
+            "suggestion": "Prefer textContent or sanitize trusted HTML."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 26,
+            "severity": "LOW",
+            "category": "style",
+            "rule": "GEN002",
+            "title": "Trailing whitespace",
+            "explanation": "Trailing whitespace creates noisy Git diffs and reduces code cleanliness.",
+            "suggestion": "Remove trailing whitespace."
+        },
+        {
+            "file": "buggy_app.py",
+            "line": 26,
+            "severity": "LOW",
+            "category": "maintainability",
+            "rule": "PY008",
+            "title": "None compared with == or !=",
+            "explanation": "Python convention uses identity checks when comparing with None.",
+            "suggestion": "Use 'is None' or 'is not None'."
+        }
+    ]
+}

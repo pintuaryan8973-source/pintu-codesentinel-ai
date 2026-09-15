@@ -1,0 +1,2109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+CodeSentinel AI - Code Review Report
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    background:
+
+        radial-gradient(
+            circle at top left,
+            rgba(0, 255, 204, 0.08),
+            transparent 25%
+        ),
+
+        #080d18;
+
+    color: #eaf0ff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+.container {
+
+    width: 94%;
+
+    max-width: 1500px;
+
+    margin: auto;
+
+    padding:
+        35px 20px 80px;
+}
+
+
+/* ======================================================
+   BRANDING
+====================================================== */
+
+.brand-banner {
+
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+}
+
+
+.brand-banner img {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(
+            0,
+            255,
+            204,
+            0.25
+        );
+
+    box-shadow:
+        0 0 40px
+        rgba(
+            0,
+            255,
+            204,
+            0.08
+        );
+}
+
+
+h1 {
+
+    text-align: center;
+
+    color: #5fffe1;
+
+    margin-bottom: 8px;
+
+    font-size: 42px;
+}
+
+
+.subtitle {
+
+    text-align: center;
+
+    color: #95a6c7;
+
+    margin-bottom: 35px;
+
+    font-size: 17px;
+}
+
+
+/* ======================================================
+   STAT CARDS
+====================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            6,
+            1fr
+        );
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+}
+
+
+.stat-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #111a2c,
+            #0d1525
+        );
+
+    border:
+        1px solid
+        #263859;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    text-align: center;
+}
+
+
+.stat-card span {
+
+    color: #8ea0c0;
+
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.stat-card b {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 28px;
+
+    color: white;
+}
+
+
+/* ======================================================
+   SECTION TITLE
+====================================================== */
+
+.section-title {
+
+    margin:
+        40px 0 16px;
+
+    font-size: 23px;
+
+    color: #5fffe1;
+}
+
+
+/* ======================================================
+   TABLE
+====================================================== */
+
+.table-wrapper {
+
+    overflow-x: auto;
+
+    border-radius: 15px;
+
+    border:
+        1px solid #263859;
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: #101827;
+}
+
+
+th,
+td {
+
+    padding: 13px;
+
+    text-align: left;
+
+    vertical-align: top;
+
+    border-bottom:
+        1px solid #263859;
+}
+
+
+th {
+
+    background: #0d1525;
+
+    color: #5fffe1;
+}
+
+
+/* ======================================================
+   SEVERITY COLORS
+====================================================== */
+
+.severity {
+
+    font-weight: bold;
+}
+
+
+.critical {
+
+    color: #ff5c70;
+}
+
+
+.high {
+
+    color: #ff9f43;
+}
+
+
+.medium {
+
+    color: #ffd166;
+}
+
+
+.low {
+
+    color: #74dfff;
+}
+
+
+.info {
+
+    color: #a8dadc;
+}
+
+
+/* ======================================================
+   DIFF VIEW
+====================================================== */
+
+.diff-card {
+
+    margin-top: 25px;
+
+    background: #101827;
+
+    border:
+        1px solid #263859;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+.diff-title {
+
+    padding: 16px 20px;
+
+    color: #5fffe1;
+
+    font-weight: bold;
+
+    border-bottom:
+        1px solid #263859;
+}
+
+
+.diff-header {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    background: #0d1525;
+}
+
+
+.diff-header div {
+
+    padding: 12px 16px;
+
+    color: #9cb0d2;
+
+    border-right:
+        1px solid #263859;
+
+    font-weight: bold;
+}
+
+
+.diff-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+}
+
+
+.code-line {
+
+    display: grid;
+
+    grid-template-columns:
+        55px 1fr;
+
+    min-height: 32px;
+
+    border-right:
+        1px solid #263859;
+
+    border-bottom:
+        1px solid
+        rgba(
+            38,
+            56,
+            89,
+            0.45
+        );
+}
+
+
+.line-number {
+
+    padding: 7px 10px;
+
+    color: #7184a8;
+
+    text-align: right;
+
+    border-right:
+        1px solid #263859;
+}
+
+
+.code-line code {
+
+    padding: 7px 12px;
+
+    white-space: pre-wrap;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    color: #e7edf9;
+}
+
+
+.removed {
+
+    background:
+        rgba(
+            255,
+            70,
+            90,
+            0.18
+        );
+}
+
+
+.added {
+
+    background:
+        rgba(
+            40,
+            200,
+            120,
+            0.18
+        );
+}
+
+
+.same {
+
+    background: #101827;
+}
+
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.footer {
+
+    margin-top: 55px;
+
+    text-align: center;
+
+    color: #7282a2;
+
+    font-size: 14px;
+}
+
+
+.footer strong {
+
+    color: #5fffe1;
+}
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (
+    max-width: 1000px
+) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+@media (
+    max-width: 700px
+) {
+
+    h1 {
+
+        font-size: 30px;
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .diff-header,
+    .diff-row {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- ===============================================
+         CODESENTINEL AI BRAND
+    ================================================ -->
+
+    <div class="brand-banner">
+
+        <img
+            src="../assets/codesentinel-banner.png"
+            alt="CodeSentinel AI Banner"
+        >
+
+    </div>
+
+
+    <h1>
+        🛡️ CodeSentinel AI
+    </h1>
+
+
+    <div class="subtitle">
+
+        AI-Powered Code Review
+        & Security Analysis Assistant
+
+        <br>
+
+        Detect • Analyze • Improve • Secure
+
+    </div>
+
+
+    <!-- ===============================================
+         REVIEW STATS
+    ================================================ -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <span>
+                Files Reviewed
+            </span>
+
+            <b>
+                2
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Total Findings
+            </span>
+
+            <b>
+                11
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Critical
+            </span>
+
+            <b>
+                1
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                High
+            </span>
+
+            <b>
+                6
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Medium
+            </span>
+
+            <b>
+                2
+            </b>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                Review Time
+            </span>
+
+            <b>
+                0.0014s
+            </b>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ===============================================
+         FINDINGS
+    ================================================ -->
+
+    <div class="section-title">
+
+        🔍 Review Findings
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Severity
+                    </th>
+
+                    <th>
+                        File
+                    </th>
+
+                    <th>
+                        Line
+                    </th>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Issue
+                    </th>
+
+                    <th>
+                        Recommendation
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        critical
+                    ">
+                        CRITICAL
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    23
+                </td>
+
+                <td>
+                    bug
+                </td>
+
+                <td>
+                    Division or modulo by zero
+                </td>
+
+                <td>
+                    Validate the divisor before performing the operation.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    4
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    Possible hard-coded secret
+                </td>
+
+                <td>
+                    Move secrets to environment variables or a secret manager and rotate any exposed credentials.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    6
+                </td>
+
+                <td>
+                    bug
+                </td>
+
+                <td>
+                    Mutable default argument
+                </td>
+
+                <td>
+                    Use None as the default and create the list, dictionary or set inside the function.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    17
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    os.system() command execution
+                </td>
+
+                <td>
+                    Prefer subprocess.run() with an argument list and shell=False.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    20
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    subprocess shell=True
+                </td>
+
+                <td>
+                    Use shell=False and pass command arguments as a list.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    unsafe_web.js
+                </td>
+
+                <td>
+                    1
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    Possible hard-coded secret
+                </td>
+
+                <td>
+                    Move secrets to environment variables or a secret manager and rotate any exposed credentials.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        high
+                    ">
+                        HIGH
+                    </span>
+                </td>
+
+                <td>
+                    unsafe_web.js
+                </td>
+
+                <td>
+                    8
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    Use of eval()
+                </td>
+
+                <td>
+                    Avoid eval() and validate structured input instead.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        medium
+                    ">
+                        MEDIUM
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    13
+                </td>
+
+                <td>
+                    reliability
+                </td>
+
+                <td>
+                    Bare except block
+                </td>
+
+                <td>
+                    Catch only the specific exception types you expect.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        medium
+                    ">
+                        MEDIUM
+                    </span>
+                </td>
+
+                <td>
+                    unsafe_web.js
+                </td>
+
+                <td>
+                    4
+                </td>
+
+                <td>
+                    security
+                </td>
+
+                <td>
+                    Direct innerHTML assignment
+                </td>
+
+                <td>
+                    Prefer textContent or sanitize trusted HTML.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        low
+                    ">
+                        LOW
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    26
+                </td>
+
+                <td>
+                    style
+                </td>
+
+                <td>
+                    Trailing whitespace
+                </td>
+
+                <td>
+                    Remove trailing whitespace.
+                </td>
+
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <span class="
+                        severity
+                        low
+                    ">
+                        LOW
+                    </span>
+                </td>
+
+                <td>
+                    buggy_app.py
+                </td>
+
+                <td>
+                    26
+                </td>
+
+                <td>
+                    maintainability
+                </td>
+
+                <td>
+                    None compared with == or !=
+                </td>
+
+                <td>
+                    Use &#x27;is None&#x27; or &#x27;is not None&#x27;.
+                </td>
+
+            </tr>
+            
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+    <!-- ===============================================
+         ORIGINAL VS RECOMMENDED
+    ================================================ -->
+
+    <div class="section-title">
+
+        🆚 Original vs Recommended
+
+    </div>
+
+
+    
+            <section class="diff-card">
+
+                <div class="diff-title">
+
+                    Suggested Safe Fixes —
+
+                    buggy_app.py
+
+                </div>
+
+
+                <div class="diff-header">
+
+                    <div>
+                        Original Code
+                    </div>
+
+                    <div>
+                        Recommended Code
+                    </div>
+
+                </div>
+
+
+                
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                1
+                            </span>
+
+                            <code>
+                                import os
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                1
+                            </span>
+
+                            <code>
+                                import os
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                2
+                            </span>
+
+                            <code>
+                                import subprocess
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                2
+                            </span>
+
+                            <code>
+                                import subprocess
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                3
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                3
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                4
+                            </span>
+
+                            <code>
+                                API_KEY = &quot;demo-secret-key-123456&quot;
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                4
+                            </span>
+
+                            <code>
+                                API_KEY = &quot;demo-secret-key-123456&quot;
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                5
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                5
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                6
+                            </span>
+
+                            <code>
+                                def add_user(name, users=[]):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                6
+                            </span>
+
+                            <code>
+                                def add_user(name, users=[]):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                7
+                            </span>
+
+                            <code>
+                                    users.append(name)
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                7
+                            </span>
+
+                            <code>
+                                    users.append(name)
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                8
+                            </span>
+
+                            <code>
+                                    return users
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                8
+                            </span>
+
+                            <code>
+                                    return users
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                9
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                9
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                10
+                            </span>
+
+                            <code>
+                                def parse_age(value):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                10
+                            </span>
+
+                            <code>
+                                def parse_age(value):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                11
+                            </span>
+
+                            <code>
+                                    try:
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                11
+                            </span>
+
+                            <code>
+                                    try:
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                12
+                            </span>
+
+                            <code>
+                                        return int(value)
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                12
+                            </span>
+
+                            <code>
+                                        return int(value)
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                13
+                            </span>
+
+                            <code>
+                                    except:
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                13
+                            </span>
+
+                            <code>
+                                    except:
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                14
+                            </span>
+
+                            <code>
+                                        return 0
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                14
+                            </span>
+
+                            <code>
+                                        return 0
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                15
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                15
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                16
+                            </span>
+
+                            <code>
+                                def backup(filename):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                16
+                            </span>
+
+                            <code>
+                                def backup(filename):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                17
+                            </span>
+
+                            <code>
+                                    os.system(&quot;backup &quot; + filename)
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                17
+                            </span>
+
+                            <code>
+                                    os.system(&quot;backup &quot; + filename)
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                18
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                18
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                19
+                            </span>
+
+                            <code>
+                                def run_tool(command):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                19
+                            </span>
+
+                            <code>
+                                def run_tool(command):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                20
+                            </span>
+
+                            <code>
+                                    subprocess.run(command, shell=True)
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                20
+                            </span>
+
+                            <code>
+                                    subprocess.run(command, shell=True)
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                21
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                21
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                22
+                            </span>
+
+                            <code>
+                                def average(total, count):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                22
+                            </span>
+
+                            <code>
+                                def average(total, count):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                23
+                            </span>
+
+                            <code>
+                                    return total / 0
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                23
+                            </span>
+
+                            <code>
+                                    return total / 0
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                24
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                24
+                            </span>
+
+                            <code>
+                                
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                25
+                            </span>
+
+                            <code>
+                                def check_user(user):
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                25
+                            </span>
+
+                            <code>
+                                def check_user(user):
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            removed
+                        ">
+
+                            <span class="line-number">
+                                26
+                            </span>
+
+                            <code>
+                                    if user == None:    
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            added
+                        ">
+
+                            <span class="line-number">
+                                26
+                            </span>
+
+                            <code>
+                                    if user is None:
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                27
+                            </span>
+
+                            <code>
+                                        return False
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                27
+                            </span>
+
+                            <code>
+                                        return False
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="diff-row">
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                28
+                            </span>
+
+                            <code>
+                                    return True
+                            </code>
+
+                        </div>
+
+
+                        <div class="
+                            code-line
+                            same
+                        ">
+
+                            <span class="line-number">
+                                28
+                            </span>
+
+                            <code>
+                                    return True
+                            </code>
+
+                        </div>
+
+                    </div>
+                    
+
+            </section>
+            
+
+
+    <!-- ===============================================
+         FOOTER
+    ================================================ -->
+
+    <div class="footer">
+
+        Generated by
+
+        <strong>
+            CodeSentinel AI
+        </strong>
+
+        <br>
+
+        Better Code. Safer Tomorrow.
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

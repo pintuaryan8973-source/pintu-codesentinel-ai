@@ -1,0 +1,43 @@
+{
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "avg_time_seconds": 0.0007851499831303954,
+  "true_positive": 6,
+  "false_positive": 0,
+  "false_negative": 0,
+  "cases": [
+    {
+      "file": "case_python.py",
+      "expected": [
+        "PY001",
+        "PY002",
+        "PY007",
+        "PY008"
+      ],
+      "detected": [
+        "PY001",
+        "PY002",
+        "PY007",
+        "PY008"
+      ],
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "file": "case_web.js",
+      "expected": [
+        "JS001",
+        "JS002"
+      ],
+      "detected": [
+        "JS001",
+        "JS002"
+      ],
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    }
+  ]
+}
