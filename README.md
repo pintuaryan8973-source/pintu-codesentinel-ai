@@ -19,15 +19,12 @@
 ![Reports](https://img.shields.io/badge/Reports-HTML%20%7C%20JSON%20%7C%20Markdown-00B8D4)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-success)
 ![Status](https://img.shields.io/badge/Status-Active-success)
-![Portfolio](https://img.shields.io/badge/Portfolio-Project-blueviolet)
 
 <br>
 
 **Python • JavaScript • TypeScript**
 
-<br>
-
-> Better Code. Safer Tomorrow.
+### Better Code. Safer Tomorrow.
 
 </div>
 
@@ -35,65 +32,61 @@
 
 # 🚀 What is CodeSentinel AI?
 
-**CodeSentinel AI** is a developer-focused code review and security analysis CLI tool designed to simulate a professional software-development code review workflow.
+**CodeSentinel AI** is a code review and security analysis CLI tool designed to simulate a professional software-development code review workflow.
 
-It scans source code and identifies common:
+It scans source code and identifies supported:
 
 - Programming bugs
 - Security risks
 - Reliability issues
 - Maintainability problems
 - Unsafe coding patterns
-- Code quality problems
+- Code-quality issues
 
-CodeSentinel AI reports findings with **file and line-level precision**.
+For every detected issue, CodeSentinel AI provides:
 
-For every detected issue, the tool can provide:
+- 📁 Exact file name
+- 📍 Exact line number
+- 🚨 Severity level
+- 🏷️ Issue category
+- 🧠 Explanation
+- 💡 Recommended fix
+- 📊 Professional review reports
 
-- Exact file name
-- Exact line number
-- Severity level
-- Issue category
-- Explanation
-- Recommended fix
-- Structured review reports
-
-The tool can review an entire project or analyze only files changed between Git revisions.
+The tool can scan an entire project or review only source files changed between Git revisions.
 
 ---
 
 # 💼 Real-World Scenario
 
-Imagine a software company where a senior developer assigns a task to a junior developer:
+Imagine a software company where a senior developer gives a junior developer a task:
 
-> "Review this project before deployment. Find bugs, security issues and risky code, then provide a professional report."
+> **"Review this project before deployment. Identify bugs, security problems and risky code, and provide a professional review report."**
 
-Instead of manually checking every source file, the developer runs:
+Instead of manually checking every source file, the developer can run:
 
 ```bash
 python reviewer.py scan project_folder
 ```
 
-CodeSentinel AI scans the project and generates structured findings.
-
-Example workflow:
+CodeSentinel AI then performs the review.
 
 ```text
 Senior Developer Assigns Project
             ↓
 Developer Runs CodeSentinel AI
             ↓
-Project Source Files Are Scanned
+Source Files Are Discovered
             ↓
-Bug & Security Rules Analyze Code
+Code & Security Rules Analyze Files
             ↓
-Exact File + Line Findings Generated
+File + Line-Level Findings Generated
             ↓
-Developer Reviews Recommended Fixes
+Recommended Fixes Are Displayed
             ↓
-HTML / Markdown / JSON Reports Generated
+Professional Reports Are Generated
             ↓
-Code Is Improved Before Deployment
+Developer Reviews & Improves Code
 ```
 
 ---
@@ -102,21 +95,21 @@ Code Is Improved Before Deployment
 
 | Feature | Description |
 |---|---|
-| 🐞 Bug Detection | Detects common programming defects and runtime risks |
+| 🐞 Bug Detection | Detects supported programming defects and runtime risks |
 | 🛡️ Security Analysis | Identifies risky and potentially insecure patterns |
-| 📁 Full Project Scan | Reviews complete project directories |
+| 📁 Full Project Scan | Reviews an entire project directory |
 | 📍 Line-Level Review | Reports exact file and line number |
-| 🚦 Severity Analysis | Critical, High, Medium and Low severity |
+| 🚦 Severity Analysis | Critical, High, Medium and Low |
 | 🏷️ Issue Categories | Bug, Security, Reliability, Maintainability and Style |
-| 💡 Fix Suggestions | Provides recommended improvements |
-| 🔀 Git Diff Review | Reviews files changed between Git revisions |
-| 🆚 Visual Diff | Original vs Recommended code comparison |
-| 📄 HTML Reports | Professional browser-based reports |
+| 💡 Fix Suggestions | Gives recommended improvements |
+| 🔀 Git Diff Review | Reviews changed files between Git revisions |
+| 🆚 Visual Diff | Shows Original vs Recommended code |
+| 📄 HTML Reports | Professional browser-based report |
 | 📝 Markdown Reports | GitHub-friendly review documentation |
 | 🔧 JSON Reports | Structured output for automation |
 | 📊 Benchmarking | Precision, Recall, F1 and review time |
 | 💻 Multi-Language | Python, JavaScript and TypeScript |
-| ⚡ Fast Static Analysis | Works locally without external Python packages |
+| ⚡ Local Analysis | Static review works without external Python packages |
 
 ---
 
@@ -124,7 +117,7 @@ Code Is Improved Before Deployment
 
 ## Python
 
-CodeSentinel AI currently checks for patterns including:
+Current Python checks include:
 
 ```text
 Python Syntax Errors
@@ -148,7 +141,7 @@ def add_user(name, users=[]):
     return users
 ```
 
-CodeSentinel AI reports:
+Possible review:
 
 ```text
 HIGH | BUG | PY001
@@ -159,10 +152,11 @@ Issue      : Mutable default argument
 
 Why:
 Mutable default values are shared between function calls
-and can cause unexpected state leakage.
+and can cause unexpected state.
 
 Suggestion:
-Use None as the default and create the list inside the function.
+Use None as the default and create the list inside
+the function.
 ```
 
 ---
@@ -185,7 +179,7 @@ Example:
 document.getElementById("output").innerHTML = message;
 ```
 
-Possible finding:
+Possible result:
 
 ```text
 MEDIUM | SECURITY | JS002
@@ -194,7 +188,7 @@ Issue:
 Direct innerHTML assignment
 
 Why:
-Untrusted content may introduce cross-site scripting risk.
+Untrusted HTML may create cross-site scripting risk.
 
 Suggestion:
 Prefer textContent or sanitize trusted HTML.
@@ -206,82 +200,72 @@ Prefer textContent or sanitize trusted HTML.
 
 | Severity | Meaning |
 |---|---|
-| 🔴 CRITICAL | Issue can directly break execution or create serious risk |
-| 🟠 HIGH | Important security or correctness issue |
+| 🔴 CRITICAL | Serious issue that may directly break execution or create major risk |
+| 🟠 HIGH | Important security or correctness problem |
 | 🟡 MEDIUM | Reliability or moderate security concern |
-| 🔵 LOW | Maintainability, style or lower-risk problem |
+| 🔵 LOW | Maintainability, style or lower-risk issue |
 | ⚪ INFO | Informational recommendation |
 
 ---
 
 # ⚡ Quick Start
 
-## 1. Open the Project
-
-Open the `codesentinel-ai` folder in VS Code.
-
----
-
-## 2. Scan the Included Sample Project
-
-Run:
+## Review the Included Sample Project
 
 ```bash
 python reviewer.py scan sample_project
 ```
 
-Example output:
+Example:
 
 ```text
-======================================================================================
-                          CODESENTINEL AI
-======================================================================================
+========================================================================================
+                              CODESENTINEL AI
+========================================================================================
+
+AI-Powered Code Review & Security Analysis Assistant
 
 Files reviewed : 2
 Findings       : 11
-Review time    : 0.002s
+Review time    : 0.0020s
+```
 
-[1] CRITICAL | BUG | PY007
+Each finding includes:
 
-File       : buggy_app.py
-Line       : 23
-Issue      : Division or modulo by zero
-
-Why:
-This expression will raise a runtime exception.
-
-Suggestion:
-Validate the divisor or replace the zero with
-the intended non-zero value.
+```text
+Severity
+Category
+Rule
+File
+Line
+Issue
+Explanation
+Suggestion
 ```
 
 ---
 
-# 📁 Scan Your Own Project
-
-You can scan another project by passing its path.
+# 📁 Review Your Own Project
 
 Example:
-
-```bash
-python reviewer.py scan "C:\Users\pintu\Desktop\my-python-project"
-```
-
-Or:
 
 ```bash
 python reviewer.py scan my_project
 ```
 
-CodeSentinel AI recursively scans supported source files inside that project.
+Windows path example:
+
+```powershell
+python .\reviewer.py scan "C:\Users\pintu\Desktop\my-project"
+```
+
+CodeSentinel AI recursively scans supported source files.
 
 ---
 
 # 🔀 Git Diff Review
 
 CodeSentinel AI can review only files changed between Git revisions.
-
-Run:
 
 ```bash
 python reviewer.py review --base HEAD~1 --target HEAD
@@ -296,12 +280,12 @@ Git Diff
       ↓
 Changed Source Files
       ↓
-CodeSentinel AI Review
+CodeSentinel AI
       ↓
-Line-Level Findings
+Review Findings
 ```
 
-This is useful before:
+Useful before:
 
 ```text
 Git Commit
@@ -313,34 +297,9 @@ Release
 
 ---
 
-# 🆚 Original vs Recommended Code
-
-CodeSentinel AI generates a visual side-by-side code comparison for supported safe transformations.
-
-Example:
-
-| Original | Recommended |
-|---|---|
-| `if user == None:` | `if user is None:` |
-| Trailing spaces | Clean code |
-| Unsafe style | Recommended style |
-
-Example:
-
-```text
-ORIGINAL CODE                  RECOMMENDED CODE
-
-if user == None:               if user is None:
-    return False                   return False
-```
-
-The visual HTML report highlights changes so developers can quickly understand recommended improvements.
-
----
-
 # 📊 Professional Reports
 
-Every successful review can generate:
+Every successful project scan generates:
 
 ```text
 reports/
@@ -349,20 +308,21 @@ reports/
 └── review_report.json
 ```
 
-## HTML Report
+---
 
-The HTML report provides:
+## 🌐 HTML Report
 
-```text
-Files Reviewed
-Total Findings
-Critical Issues
-High Issues
-Medium Issues
-Review Time
-Detailed Findings
-Original vs Recommended Diff
-```
+The HTML report contains:
+
+- CodeSentinel AI branding
+- Files reviewed
+- Total findings
+- Critical issues
+- High issues
+- Medium issues
+- Review time
+- Detailed review findings
+- Original vs Recommended code
 
 Open on Windows:
 
@@ -384,7 +344,7 @@ open reports/review_report.html
 
 ---
 
-## Markdown Report
+## 📝 Markdown Report
 
 Generated file:
 
@@ -394,17 +354,15 @@ reports/review_report.md
 
 Useful for:
 
-```text
-GitHub Documentation
-Pull Request Notes
-Code Review Evidence
-Portfolio Documentation
-Technical Reports
-```
+- GitHub documentation
+- Code-review notes
+- Portfolio evidence
+- Technical documentation
+- Pull request notes
 
 ---
 
-## JSON Report
+## 🔧 JSON Report
 
 Generated file:
 
@@ -414,14 +372,41 @@ reports/review_report.json
 
 Useful for future:
 
+- Automation
+- Dashboards
+- CI/CD
+- Analytics
+- APIs
+- Security tooling
+
+---
+
+# 🆚 Original vs Recommended
+
+CodeSentinel AI can generate side-by-side safe code recommendations.
+
+Example:
+
 ```text
-Automation
-Dashboards
-CI/CD
-APIs
-Security Monitoring
-Analytics
+ORIGINAL CODE                  RECOMMENDED CODE
+
+if user == None:               if user is None:
+    return False                   return False
 ```
+
+The HTML report visually highlights:
+
+```text
+Original Code
+      ↓
+Detected Issue
+      ↓
+Recommended Code
+```
+
+Only supported low-risk transformations are displayed automatically.
+
+Developers should manually review recommendations before applying changes to production code.
 
 ---
 
@@ -435,7 +420,7 @@ Run:
 python benchmark.py
 ```
 
-Example output with the bundled labeled test cases:
+Example:
 
 ```text
 ==============================================================
@@ -446,7 +431,6 @@ Precision : 100.00%
 Recall    : 100.00%
 F1 Score  : 100.00%
 Avg Time  : 0.000693s
-
 TP / FP / FN : 6 / 0 / 0
 
 ==============================================================
@@ -459,18 +443,18 @@ TP / FP / FN : 6 / 0 / 0
 | Metric | What it Measures | Why it Matters |
 |---|---|---|
 | F1 Score | Harmonic mean of Precision and Recall | Overall detection quality |
-| Precision | How many reported issues were expected findings | Fewer false alarms |
-| Recall | How many expected issues were detected | Fewer missed issues |
+| Precision | Percentage of reported expected findings | Helps measure false alerts |
+| Recall | Percentage of expected issues detected | Helps measure missed findings |
 | Avg Time | Average review execution time | Performance |
-| True Positive | Correctly detected issue | Correct detection |
-| False Positive | Unexpected reported issue | False alert |
+| True Positive | Expected issue correctly detected | Correct detection |
+| False Positive | Unexpected issue reported | False alert |
 | False Negative | Expected issue not detected | Missed issue |
 
 ---
 
-# ⚠️ Benchmark Disclaimer
+## ⚠️ Benchmark Disclaimer
 
-The included benchmark measures only the **small labeled test cases provided inside this repository**.
+The included benchmark measures only the **small labeled test cases bundled with this repository**.
 
 A result such as:
 
@@ -480,46 +464,120 @@ Recall    : 100%
 F1 Score  : 100%
 ```
 
-does **not** mean CodeSentinel AI has 100% accuracy on real-world software projects.
+does **not** mean CodeSentinel AI has 100% accuracy on all real-world software projects.
 
-The benchmark exists to demonstrate how code-review quality can be measured using reproducible test cases.
+The benchmark exists to demonstrate how code-review quality can be measured on reproducible test cases.
+
+---
+
+# 📸 CodeSentinel AI — Project Screenshots
+
+## 1. CodeSentinel AI Review Overview
+
+Overview of the working CodeSentinel AI project and review output.
+
+![CodeSentinel AI Overview](01-terminal-review.png.png)
+
+---
+
+## 2. Original vs Recommended Code
+
+Professional side-by-side comparison showing original source code and recommended safer code.
+
+![Original vs Recommended](02-original-vs-recommended.png.png)
+
+---
+
+## 3. Review Findings
+
+Detailed findings showing:
+
+- Severity
+- File
+- Line number
+- Category
+- Issue
+- Recommendation
+
+![Review Findings](03-review-findings.png.png)
+
+---
+
+## 4. Local Code Review Benchmark
+
+Benchmark displaying:
+
+- Precision
+- Recall
+- F1 Score
+- Average review time
+- True Positive
+- False Positive
+- False Negative
+
+![Code Review Benchmark](04-benchmark.png.png)
+
+> Benchmark values shown are based only on the bundled labeled test cases.
+
+---
+
+## 5. Terminal Code Review
+
+Command-line demonstration showing CodeSentinel AI detecting code issues and generating review reports.
+
+![Terminal Code Review](05-terminal-review.png.png)
+
+---
+
+## 6. Project Source Code & Structure
+
+VS Code project structure showing the main CodeSentinel AI source code, sample project, benchmark cases and reports.
+
+![Project Code](06-project-code.png.png)
 
 ---
 
 # 📂 Project Structure
 
 ```text
-codesentinel-ai/
+pintu-codesentinel-ai/
 │
 ├── assets/
 │   └── codesentinel-banner.png
-│
-├── reviewer.py
-├── benchmark.py
-├── README.md
-│
-├── sample_project/
-│   ├── buggy_app.py
-│   └── unsafe_web.js
 │
 ├── benchmark_cases/
 │   ├── case_python.py
 │   └── case_web.js
 │
-└── reports/
-    ├── review_report.html
-    ├── review_report.md
-    ├── review_report.json
-    └── benchmark.json
+├── reports/
+│   ├── review_report.html
+│   ├── review_report.md
+│   ├── review_report.json
+│   └── benchmark.json
+│
+├── sample_project/
+│   ├── buggy_app.py
+│   └── unsafe_web.js
+│
+├── screenshots/
+│
+├── 01-terminal-review.png.png
+├── 02-original-vs-recommended.png.png
+├── 03-review-findings.png.png
+├── 04-benchmark.png.png
+├── 05-terminal-review.png.png
+├── 06-project-code.png.png
+│
+├── benchmark.py
+├── reviewer.py
+└── README.md
 ```
 
 ---
 
 # 🧪 Sample Project
 
-The repository contains intentionally vulnerable or buggy sample files.
-
-These files exist only to demonstrate CodeSentinel AI's detection capabilities.
+The included sample files intentionally contain unsafe or buggy code for demonstration.
 
 Example:
 
@@ -528,13 +586,16 @@ def average(total, count):
     return total / 0
 ```
 
-Finding:
+CodeSentinel AI can report:
 
 ```text
 CRITICAL | BUG | PY007
 
 Issue:
 Division or modulo by zero
+
+Why:
+This expression will raise a runtime exception.
 
 Suggestion:
 Validate the divisor before performing the operation.
@@ -544,13 +605,13 @@ Validate the divisor before performing the operation.
 
 # 🔐 Security Analysis Example
 
-Example unsafe code:
+Unsafe code:
 
 ```python
 os.system("backup " + filename)
 ```
 
-Possible report:
+Possible finding:
 
 ```text
 HIGH | SECURITY | PY004
@@ -559,12 +620,12 @@ Issue:
 os.system() command execution
 
 Why:
-Building shell commands from untrusted data can
+Building shell commands from untrusted data may
 lead to command injection.
 
 Suggestion:
-Prefer subprocess.run([...], shell=False)
-and validate arguments.
+Prefer subprocess.run() with an argument list
+and shell=False.
 ```
 
 ---
@@ -577,7 +638,7 @@ Example:
 API_KEY = "demo-secret-key-123456"
 ```
 
-CodeSentinel AI can report:
+Possible finding:
 
 ```text
 HIGH | SECURITY | GEN001
@@ -590,7 +651,22 @@ Move secrets to environment variables or
 a secret manager.
 ```
 
-> The sample secrets included in this repository are fake demonstration values only.
+> All secrets included in the sample project are fake demonstration values.
+
+---
+
+# 💻 Supported Languages
+
+| Language | Status |
+|---|---|
+| Python | ✅ Supported |
+| JavaScript | ✅ Supported |
+| TypeScript | ✅ Supported |
+| JSX | ✅ Supported |
+| TSX | ✅ Supported |
+| Java | 🔜 Planned |
+| Go | 🔜 Planned |
+| C / C++ | 🔜 Planned |
 
 ---
 
@@ -604,104 +680,10 @@ a secret manager.
 
 ---
 
-# 💻 Supported Languages
-
-| Language | Current Support |
-|---|---|
-| Python | ✅ |
-| JavaScript | ✅ |
-| TypeScript | ✅ |
-| JSX | ✅ |
-| TSX | ✅ |
-| Java | 🔜 Planned |
-| Go | 🔜 Planned |
-| C / C++ | 🔜 Planned |
-
----
-
-# 📸 Portfolio Screenshots
-
-Recommended screenshots for this repository:
-
-```text
-01-terminal-review.png
-02-visual-diff-report.png
-03-benchmark.png
-04-project-code.png
-```
-
-## Screenshot 1 — Terminal Review
-
-Show:
-
-```text
-Files Reviewed
-Findings
-Severity
-File
-Line
-Issue
-Suggestion
-```
-
----
-
-## Screenshot 2 — Visual Diff Report
-
-Show the browser HTML report containing:
-
-```text
-Original Code
-Recommended Code
-Findings
-Severity
-Review Statistics
-```
-
----
-
-## Screenshot 3 — Benchmark
-
-Run:
-
-```bash
-python benchmark.py
-```
-
-Capture:
-
-```text
-Precision
-Recall
-F1 Score
-Avg Time
-TP / FP / FN
-```
-
----
-
-## Screenshot 4 — Project Code
-
-Open `reviewer.py` in VS Code.
-
-Keep Explorer visible showing:
-
-```text
-assets
-benchmark_cases
-sample_project
-reports
-reviewer.py
-benchmark.py
-README.md
-```
-
----
-
 # 🛠️ Technologies Used
 
 ```text
-Python 3
+Python
 Python AST
 Regular Expressions
 Git
@@ -710,7 +692,7 @@ HTML
 CSS
 JSON
 Markdown
-CLI
+CLI Development
 Static Code Analysis
 Security Analysis
 Benchmarking
@@ -718,41 +700,41 @@ Benchmarking
 
 ---
 
-# 🧩 How It Works
+# 🧩 How CodeSentinel AI Works
 
 ```text
-                   ┌──────────────────────┐
-                   │   Source Project     │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │ File Discovery       │
-                   │ Python / JS / TS     │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │ Static Analysis      │
-                   │ AST + Rules          │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │ Security Analysis    │
-                   │ Risky Patterns       │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-                   ┌──────────────────────┐
-                   │ Finding Engine       │
-                   │ File + Line + Risk   │
-                   └──────────┬───────────┘
-                              │
-                              ▼
-             ┌────────────────────────────────┐
-             │ HTML | Markdown | JSON Report │
-             └────────────────────────────────┘
+               ┌─────────────────────────┐
+               │     Source Project      │
+               └────────────┬────────────┘
+                            │
+                            ▼
+               ┌─────────────────────────┐
+               │     File Discovery      │
+               │ Python / JS / TS / JSX │
+               └────────────┬────────────┘
+                            │
+                            ▼
+               ┌─────────────────────────┐
+               │     Static Analysis     │
+               │      AST + Rules        │
+               └────────────┬────────────┘
+                            │
+                            ▼
+               ┌─────────────────────────┐
+               │   Security Analysis     │
+               │    Risky Patterns       │
+               └────────────┬────────────┘
+                            │
+                            ▼
+               ┌─────────────────────────┐
+               │     Finding Engine      │
+               │ File + Line + Severity  │
+               └────────────┬────────────┘
+                            │
+                            ▼
+        ┌────────────────────────────────────────┐
+        │ HTML | Markdown | JSON Review Reports │
+        └────────────────────────────────────────┘
 ```
 
 ---
@@ -761,43 +743,40 @@ Benchmarking
 
 This project demonstrates practical knowledge of:
 
-```text
-Python Programming
-Static Code Analysis
-Abstract Syntax Trees
-Security Analysis
-Git Workflow
-Software Debugging
-Code Review
-Report Generation
-Benchmarking
-CLI Application Development
-Defensive Programming
-GitHub Project Documentation
-```
+- Python Programming
+- Static Code Analysis
+- Abstract Syntax Trees
+- Security Analysis
+- Git Workflow
+- Software Debugging
+- Code Review
+- Report Generation
+- Benchmarking
+- CLI Application Development
+- Defensive Programming
+- GitHub Documentation
 
 ---
 
 # 🚀 Future Improvements
 
-Future versions may include:
+Planned improvements include:
 
 ```text
-Optional LLM-Based Deep Code Review
+AI-Assisted Deep Code Review
 More Programming Languages
 Pull Request Integration
 GitHub Actions
 CI/CD Integration
 Automatic Safe Fix Application
-Custom Rule Configuration
+Custom Rules
 Rule Enable / Disable Options
 Interactive Dashboard
+SARIF Reports
 PDF Reports
-SARIF Output
 Repository-Level Context
-Duplicate Finding Reduction
 Advanced Security Rules
-Test Execution Integration
+Test Execution
 Review History
 Team Dashboard
 ```
@@ -808,19 +787,17 @@ Team Dashboard
 
 The current version primarily uses deterministic static-analysis rules.
 
-A future AI layer can be added to analyze:
+A future AI-assisted review layer may help analyze:
 
-```text
-Business Logic
-Complex Code Context
-Cross-File Relationships
-Maintainability
-Architecture
-Developer Intent
-More Advanced Bug Patterns
-```
+- Business logic
+- Complex code context
+- Cross-file relationships
+- Maintainability
+- Architecture
+- Developer intent
+- Advanced bug patterns
 
-This approach keeps the current results reproducible while leaving room for advanced AI-assisted reviews.
+This allows the current version to remain reproducible while leaving room for deeper AI-assisted analysis.
 
 ---
 
@@ -830,14 +807,13 @@ CodeSentinel AI is a **code review assistant**.
 
 It does not guarantee that:
 
-```text
-Every possible bug will be found
-Every security vulnerability will be detected
-Every suggestion is appropriate for every project
-A reviewed project is automatically secure
-```
+- Every possible software bug will be found
+- Every security vulnerability will be detected
+- Every recommendation will be appropriate for every project
+- Reviewed code is automatically secure
+- All business-logic defects can be detected
 
-Developers should always verify findings before modifying production code.
+Developers should manually verify findings before changing production code.
 
 ---
 
@@ -845,20 +821,18 @@ Developers should always verify findings before modifying production code.
 
 CodeSentinel AI is designed for:
 
-```text
-Software Development
-Defensive Security
-Educational Labs
-Authorized Code Review
-Personal Projects
-Company Projects You Are Authorized To Review
-```
+- Software development
+- Defensive security
+- Educational labs
+- Authorized code review
+- Personal projects
+- Company projects you have permission to review
 
-Do not use confidential source code with external services unless you have permission from the code owner.
+Do not send confidential source code to external services without authorization.
 
 ---
 
-# 🗺️ Roadmap
+# 🗺️ Project Roadmap
 
 ```text
 ✅ Full Project Scan
@@ -878,30 +852,28 @@ Do not use confidential source code with external services unless you have permi
 🔜 AI-Assisted Review
 🔜 GitHub Actions
 🔜 Pull Request Comments
-🔜 More Languages
-🔜 Automatic Safe Fixes
+🔜 Additional Languages
+🔜 Safe Automatic Fixes
 🔜 Dashboard
 🔜 SARIF Support
 ```
 
 ---
 
-# 📌 Why I Built This Project
+# 📌 Why I Built CodeSentinel AI
 
-Modern development teams perform code reviews before merging and deploying software.
+Modern development teams review code before merging and deploying software.
 
-I created CodeSentinel AI to understand and demonstrate:
+I created CodeSentinel AI to learn and demonstrate:
 
-```text
-How code-review tools analyze source code
-How bugs can be detected programmatically
-How security rules can identify risky code
-How Git-based review workflows work
-How professional reports can be generated
-How review quality can be benchmarked
-```
+- How code-review tools analyze source code
+- How bugs can be detected programmatically
+- How security rules identify risky code
+- How Git-based review workflows work
+- How professional reports are generated
+- How review quality can be benchmarked
 
-The project was built as part of my practical learning journey in Python, Cyber Security and software development.
+This project is part of my practical learning journey in **Python, Cyber Security and Software Development**.
 
 ---
 
@@ -913,7 +885,7 @@ The project was built as part of my practical learning journey in Python, Cyber 
 
 Networking | Python | Security Operations
 
-GitHub:
+### GitHub
 
 ```text
 https://github.com/pintuaryan8973-source
@@ -923,11 +895,11 @@ https://github.com/pintuaryan8973-source
 
 <div align="center">
 
-## 🛡️ CodeSentinel AI
+# 🛡️ CodeSentinel AI
 
 ### Detect • Analyze • Improve • Secure
 
-**Better Code. Safer Tomorrow.**
+## Better Code. Safer Tomorrow.
 
 ⭐ If you find this project useful, consider starring the repository.
 
